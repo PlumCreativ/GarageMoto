@@ -1,26 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.HelloController">
    <children>
-      <GridPane layoutY="116.0" prefHeight="284.0" prefWidth="611.0">
+      <Pane prefHeight="237.0" prefWidth="1098.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="817.0">
+              <columns>
+                  <TableColumn fx:id="tableId" prefWidth="75.0" text="Column X" />
+                  <TableColumn fx:id="tableGarage" prefWidth="75.0" text="Column X" />
+                <TableColumn fx:id="tableMessage" prefWidth="64.79998779296875" text="message" />
+                  <TableColumn fx:id="tableUser" minWidth="0.0" prefWidth="72.00001525878906" text="user" />
+                  <TableColumn fx:id="tableMotif" prefWidth="97.60003662109375" text="motif" />
+                  <TableColumn fx:id="tableComment" prefWidth="101.5999755859375" text="comment" />
+                  <TableColumn fx:id="tablePieces" minWidth="0.0" prefWidth="147.199951171875" text="pieces" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <GridPane alignment="CENTER" prefHeight="238.0" prefWidth="1097.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="9.999951362609863" prefWidth="16.599971771240234" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="532.8000486373901" minWidth="10.0" prefWidth="208.79999084472655" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="555.1999359130859" minWidth="10.0" prefWidth="65.5999755859375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="475.1999755859375" minWidth="10.0" prefWidth="219.00007324218745" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.20002441406245" minWidth="10.0" prefWidth="57.40004882812502" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.59997558593744" minWidth="10.0" prefWidth="248.2000549316407" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.799993896484374" minHeight="10.0" prefHeight="25.000006103515624" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.9999755859375" minHeight="10.0" prefHeight="38.59999389648438" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="39.80002059936524" minHeight="10.0" prefHeight="35.80002059936524" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="45.400000000000006" minHeight="10.0" prefHeight="45.400000000000006" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="37.000024414062494" minHeight="10.0" prefHeight="37.000024414062494" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <TextField prefWidth="86.0" promptText="Motif" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Commetaires" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ChoiceBox prefHeight="26.0" prefWidth="230.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="219.0" text="Supprimer" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="231.0" text="Changer" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="209.0" text="Enregistrer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
       </GridPane>
    </children>
-</Pane>
+</VBox>
