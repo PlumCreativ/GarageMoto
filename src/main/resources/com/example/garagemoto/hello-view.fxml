@@ -18,8 +18,8 @@
          <children>
             <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="817.0">
               <columns>
-                  <TableColumn fx:id="tableId" prefWidth="75.0" text="Column X" />
-                  <TableColumn fx:id="tableGarage" prefWidth="75.0" text="Column X" />
+                  <TableColumn fx:id="tableId" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="tableGarage" prefWidth="75.0" text="garagiste" />
                 <TableColumn fx:id="tableMessage" prefWidth="64.79998779296875" text="message" />
                   <TableColumn fx:id="tableUser" minWidth="0.0" prefWidth="72.00001525878906" text="user" />
                   <TableColumn fx:id="tableMotif" prefWidth="97.60003662109375" text="motif" />

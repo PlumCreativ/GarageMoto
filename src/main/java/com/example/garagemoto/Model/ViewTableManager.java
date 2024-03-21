@@ -1,39 +1,43 @@
 package com.example.garagemoto.Model;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class ViewTableManager {
 
-    // private int requestId;
-    private int requestId, request_userId, request_garageId, request_piecesId, request_messageId; 
+    private ViewTablePieces pieces;    
+    private ViewTableMessage message;    
+    private ViewTableUser user;    
+    private ViewTableGarage garage;    
+    private SimpleIntegerProperty requestId; 
     private SimpleStringProperty requestMotif, requestComment;
 
 
     public ViewTableManager(
-        int requestId,
-        int request_garageId,
-        int request_userId,
-        int request_piecesId,
-        int request_messageId,
-        String requestMotif,
-        String requestComment
+        int _requestId,
+        ViewTableGarage _garage,
+        ViewTableUser _user,
+        ViewTablePieces _pieces,
+        ViewTableMessage _message,
+        String _requestMotif,
+        String _requestComment
         ) {
-        this.requestMotif = new SimpleStringProperty(requestMotif);
-        this.requestComment = new SimpleStringProperty(requestComment);
-        this.request_piecesId = request_piecesId;
-        this.request_garageId = request_garageId;
-        this.request_userId = request_userId;
-        this.request_messageId = request_messageId;
+        this.requestMotif = new SimpleStringProperty(_requestMotif);
+        this.requestComment = new SimpleStringProperty(_requestComment);
+        this.pieces = _pieces ;
+        this.garage = _garage ;
+        this.user = _user ;
+        this.message = _message ;
 
-        if (requestId != 0) {
-            this.requestId = requestId;
+        if (_requestId != 0) {
+            this.requestId = new SimpleIntegerProperty(_requestId) ;
         }
     }
 
 
     //Getters
     public int getRequestId() {
-        return this.requestId;
+        return this.requestId.get();
     }
 
     public String getRequestMotif() {
@@ -44,21 +48,25 @@ public class ViewTableManager {
         return this.requestComment.get();
     }
 
-    public int getRequestPieces() {
-        return this.request_piecesId;
+    public ViewTablePieces getRequestPieces() {
+        return this.pieces;
     }
 
-    public int getRequestUser() {
-        return this.request_userId;
+    public ViewTableUser getRequestUser() {
+        return this.user;
     }
 
-    public int getRequestMessage() {
-        return this.request_messageId;
+    public ViewTableGarage getRequestGarage() {
+        return this.garage;
+    }
+
+    public ViewTableMessage getRequestMessage() {
+        return this.message;
     }
 
 
     //Setters
-    public void setRequestId(int requestId) {
+    public void setRequestId(SimpleIntegerProperty requestId) {
         this.requestId = requestId;
     }
 
@@ -71,16 +79,20 @@ public class ViewTableManager {
     }
 
 
-    public void setRequestPieces(int request_piecesId) {
-        this.request_piecesId = request_piecesId;
+    public void setRequestPieces(ViewTablePieces _pieces) {
+        this.pieces = _pieces;
     }
 
-    public void setRequestUser(int request_userId) {
-        this.request_userId = request_userId;
+    public void setRequestUser(ViewTableUser _user) {
+        this.user = _user;
     }
 
-    public void setRequestMessage(int request_messageId) {
-        this.request_messageId = request_messageId;
+    public void setRequestGarage(ViewTableGarage _garage) {
+        this.garage = _garage;
+    }
+
+    public void setRequestMessage(ViewTableMessage message) {
+        this.message = message;
     }
 
 

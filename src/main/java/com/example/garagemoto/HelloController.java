@@ -3,17 +3,24 @@ package com.example.garagemoto;
 import com.example.garagemoto.BDD.BD;
 import com.example.garagemoto.Model.ViewTableManager;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javax.security.auth.callback.Callback;
 
 public class HelloController implements Initializable{
     @FXML
@@ -51,17 +58,29 @@ public class HelloController implements Initializable{
 
 
     int index = -1;
+
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         tableId.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("requestId"));
-        tableGarage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("request_garageId"));
-        tableUser.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("request_userId"));
-        tablePieces.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("request_piecesId"));
-        tableMessage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("request_messageId"));
+        tableGarage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("garage"));
+        tableUser.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("user"));
+        tablePieces.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("pieces"));
+        tableMessage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("message"));
         tableMotif.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestMotif"));
         tableComment.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestComment"));
+
+        // tablePieces.setCellValueFactory(new Callback<CellDataFeatures<ViewTableManager,String>,ObservableValue<String>>(){
+
+        //         @Override
+        //         public ObservableValue<String> call(CellDataFeatures<ViewTableManager, String> param) {
+        //             return new SimpleStringProperty(param.getValue().getMatiere().getIntitule());
+        //         }
+        //     });
 
         listRequest = BD.getAllRequest();
         tableView.setItems(listRequest);

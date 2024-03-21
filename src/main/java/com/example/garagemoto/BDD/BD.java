@@ -1,7 +1,6 @@
 package com.example.garagemoto.BDD;
 
 import com.example.garagemoto.Model.ViewTableManager;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -10,14 +9,15 @@ import java.sql.*;
 public class BD{
 
 
+    Connection conn = null;
     public static Connection DbConnection(){
-        Connection conn = null;
 
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/moto", "root", "");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/moto", "root", "");
             return conn;
 
-        } catch (SQLException exception) {
+        } catch (Exception exception) {
             throw new RuntimeException(exception);
         }
 
@@ -97,13 +97,15 @@ public class BD{
             pr_stmt = conn.prepareStatement(query);
             rs = pr_stmt.executeQuery();
             while (rs.next()) {
-                list.add(new ViewTableManager(Integer.parseInt(rs.getString("id_rdv")),
-                Integer.parseInt(rs.getString("id_garage")),
-                Integer.parseInt(rs.getString("id_user")),
-                Integer.parseInt(rs.getString("id_pieces")),
-                Integer.parseInt(rs.getString("id_message")),
-                rs.getString("comment"),
-                rs.getString("motif")));
+                list.add(
+                    new ViewTableManager(Integer.parseInt(rs.getString("id_rdv")),
+                    Integer.parseInt(rs.getString("id_garage")),
+                    Integer.parseInt(rs.getString("id_user")),
+                    Integer.parseInt(rs.getString("id_piece")),
+                    Integer.parseInt(rs.getString("id_message")),
+                    rs.getString("comment"),
+                    rs.getString("motif"))
+                );
             }
 
         }catch (SQLException e){
