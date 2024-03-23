@@ -1,4 +1,4 @@
-package com.example.garagemoto.Model;
+package com.example.garagemoto.View;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -40,27 +40,27 @@ public class ViewTableManager {
         return this.requestId.get();
     }
 
-    public String getRequestMotif() {
+    public String getMotif() {
         return this.requestMotif.get();
     }
 
-    public String getRequestComment() {
+    public String getComment() {
         return this.requestComment.get();
     }
 
-    public ViewTablePieces getRequestPieces() {
+    public ViewTablePieces getPieces() {
         return this.pieces;
     }
 
-    public ViewTableUser getRequestUser() {
+    public ViewTableUser getUser() {
         return this.user;
     }
 
-    public ViewTableGarage getRequestGarage() {
+    public ViewTableGarage getGarage() {
         return this.garage;
     }
 
-    public ViewTableMessage getRequestMessage() {
+    public ViewTableMessage getMessage() {
         return this.message;
     }
 
@@ -70,28 +70,28 @@ public class ViewTableManager {
         this.requestId = requestId;
     }
 
-    public void setRequestMotif(SimpleStringProperty requestMotif) {
+    public void setMotif(SimpleStringProperty requestMotif) {
         this.requestMotif = requestMotif;
     }
 
-    public void setRequestComment(SimpleStringProperty requestComment) {
+    public void setComment(SimpleStringProperty requestComment) {
         this.requestComment = requestComment;
     }
 
 
-    public void setRequestPieces(ViewTablePieces _pieces) {
+    public void setPieces(ViewTablePieces _pieces) {
         this.pieces = _pieces;
     }
 
-    public void setRequestUser(ViewTableUser _user) {
+    public void setUser(ViewTableUser _user) {
         this.user = _user;
     }
 
-    public void setRequestGarage(ViewTableGarage _garage) {
+    public void setGarage(ViewTableGarage _garage) {
         this.garage = _garage;
     }
 
-    public void setRequestMessage(ViewTableMessage message) {
+    public void setMessage(ViewTableMessage message) {
         this.message = message;
     }
 

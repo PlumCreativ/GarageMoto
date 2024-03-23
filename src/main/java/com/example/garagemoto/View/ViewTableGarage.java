@@ -1,4 +1,4 @@
-package com.example.garagemoto.Model;
+package com.example.garagemoto.View;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -8,13 +8,16 @@ public class ViewTableGarage {
     private SimpleIntegerProperty request_garageId;
     private SimpleStringProperty garageName;
     private SimpleStringProperty adresse;
-    private SimpleStringProperty maile;
+    private SimpleStringProperty mail;
 
-    public ViewTableGarage(int _request_garageId, String _garageName, String _adresse, String _maile){
-        this.request_garageId = new SimpleIntegerProperty(_request_garageId);
+    public ViewTableGarage(int _request_garageId, String _garageName, String _adresse, String _mail){
         this.garageName = new SimpleStringProperty(_garageName);
         this.adresse = new SimpleStringProperty(_adresse);
-        this.maile = new SimpleStringProperty(_maile);
+        this.mail = new SimpleStringProperty(_mail);
+
+        if (_request_garageId != 0) {
+            this.request_garageId = new SimpleIntegerProperty(_request_garageId) ;
+        }
     }
 
     //Getters
@@ -31,7 +34,7 @@ public class ViewTableGarage {
     }
 
     public SimpleStringProperty getMaile() {
-        return maile;
+        return mail;
     }
 
 
@@ -48,8 +51,8 @@ public class ViewTableGarage {
         this.adresse = adresse;
     }
 
-    public void setMaile(SimpleStringProperty maile) {
-        this.maile = maile;
+    public void setMaile(SimpleStringProperty mail) {
+        this.mail = mail;
     }
     
 }

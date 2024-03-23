@@ -1,60 +1,114 @@
-package com.example.garagemoto;
+package com.example.garagemoto.Controller;
 
-import com.example.garagemoto.BDD.BD;
-import com.example.garagemoto.Model.ViewTableManager;
+import com.example.garagemoto.Model.BD;
+import com.example.garagemoto.View.ViewTableGarage;
+import com.example.garagemoto.View.ViewTableManager;
+import com.example.garagemoto.View.ViewTableMessage;
+import com.example.garagemoto.View.ViewTablePieces;
+import com.example.garagemoto.View.ViewTableUser;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import javax.security.auth.callback.Callback;
 
 public class HelloController implements Initializable{
+
+    // //Functions
     @FXML
     private TextField RequestAddTest;
 
     @FXML
     private TextField RequestUpdateTest;
 
+    //Table List
     @FXML
-    private ObservableList<ViewTableManager> listRequest;
+    private ObservableList<ViewTableMessage> listRequest;
 
+    //Table Message
+    @FXML
+    private TableView<ViewTableMessage> tableMessage;
+
+    @FXML
+    private TableColumn<ViewTableMessage, Integer> tableMessageId;
+
+    @FXML
+    private TableColumn<ViewTableMessage, String> tableMessGarage;
+
+    @FXML
+    private TableColumn<ViewTableMessage, String> tableMessUser;
+
+    // //Table User
+    @FXML
+    private TableView<ViewTableUser> tableUser;
+
+    @FXML
+    private TableColumn<ViewTableUser, Integer> tableUserId;
+    
+    @FXML
+    private TableColumn<ViewTableUser, String> tableUserName;
+    
+    @FXML
+    private TableColumn<ViewTableUser, String> tableUserEmail;
+    
+    @FXML
+    private TableColumn<ViewTableUser, String> tableUserAdresse;
+    
+    @FXML
+    private TableColumn<ViewTableUser, Integer> tableTelephoneNumber;
+
+    // //Table Garage
+    @FXML
+    private TableView<ViewTableGarage> tableGarage;
+
+    @FXML
+    private TableColumn<ViewTableGarage, Integer> tableGarageId;
+
+    @FXML
+    private TableColumn<ViewTableGarage, String> tableGarageName;
+
+    @FXML
+    private TableColumn<ViewTableGarage, String> tableGarageAdresse;
+
+    @FXML
+    private TableColumn<ViewTableGarage, String> tableGarageEmail;
+
+    // //Table Pieces
+    @FXML
+    private TableView<ViewTablePieces> tablePieces;
+    
+    @FXML
+    private TableColumn<ViewTablePieces, Integer> tablePiecesId;
+    
+    @FXML
+    private TableColumn<ViewTablePieces, String> tablePieceName;
+    
+    @FXML
+    private TableColumn<ViewTablePieces, Integer> tablePiecePrix;
+    
+    @FXML
+    private TableColumn<ViewTablePieces, Integer> tablePieceType;
+    
+    // //Table Manager
     @FXML
     private TableView<ViewTableManager> tableView;
 
     @FXML
     private TableColumn<ViewTableManager, String> tableMotif;
-
+    
     @FXML
     private TableColumn<ViewTableManager, String> tableComment;
 
     @FXML
-    private TableColumn<ViewTableManager, Integer> tablePieces;
-
-    @FXML
     private TableColumn<ViewTableManager, Integer> tableId;
 
-    @FXML
-    private TableColumn<ViewTableManager, Integer> tableMessage;
-
-    @FXML
-    private TableColumn<ViewTableManager, Integer> tableUser;
-
-    @FXML
-    private TableColumn<ViewTableManager, Integer> tableGarage;
 
 
     int index = -1;
@@ -66,34 +120,43 @@ public class HelloController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
+        //Manager
         tableId.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("requestId"));
-        tableGarage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("garage"));
-        tableUser.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("user"));
-        tablePieces.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("pieces"));
-        tableMessage.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("message"));
         tableMotif.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestMotif"));
         tableComment.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestComment"));
+        //Message
+        tableMessageId.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, Integer>("request_messageid")); 
 
-        // tablePieces.setCellValueFactory(new Callback<CellDataFeatures<ViewTableManager,String>,ObservableValue<String>>(){
+        // tableMessGarage.setCellValueFactory(new Callback<CellDataFeatures<ViewTableManager,String>,ObservableValue<String>>(){
 
-        //         @Override
-        //         public ObservableValue<String> call(CellDataFeatures<ViewTableManager, String> param) {
-        //             return new SimpleStringProperty(param.getValue().getMatiere().getIntitule());
-        //         }
-        //     });
+        //     @Override
+        //     public ObservableValue<String> call(CellDataFeatures<ViewTableManager, String> param) {
+        //         return new SimpleStringProperty(param.getValue().getMessage().getMess_Garage());
+        //     }
+        // });       
+        tableMessUser.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_user"));        
+        tableMessGarage.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_garage"));        
+        //Pieces
+        tablePieceName.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("pieceName"));
+        //Garage
+        tableGarageName.setCellValueFactory(new PropertyValueFactory<ViewTableGarage, String>("garageName"));
+
+        //User
+        tableUserName.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("userName"));
+
 
         listRequest = BD.getAllRequest();
-        tableView.setItems(listRequest);
+        tableMessage.setItems(listRequest);
 
-        // tableView.setItems(getTableView());
     }
 
-    // public ObservableList<ViewTableManager> getTableView()
+    // public ObservableList<ViewTableMessage> getTableView()
     // {
     //     ObservableList<ViewTableManager> data = FXCollections.observableArrayList();
-    //     data.add(new ViewTableManager("Motif", "Comment", "Piece", "User", "Message"));
-    //     return data;
+    //     return data.add(new ViewTableMessage(tableMessGarage, tableMessGarage, tableMessUser);
+        
     // }
+
 
 
     //Affichage de la base de données

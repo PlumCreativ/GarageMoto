@@ -8,27 +8,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="1127.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.Controller.HelloController">
    <children>
-      <Pane prefHeight="237.0" prefWidth="1098.0">
-         <children>
-            <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="817.0">
-              <columns>
-                  <TableColumn fx:id="tableId" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="tableGarage" prefWidth="75.0" text="garagiste" />
-                <TableColumn fx:id="tableMessage" prefWidth="64.79998779296875" text="message" />
-                  <TableColumn fx:id="tableUser" minWidth="0.0" prefWidth="72.00001525878906" text="user" />
-                  <TableColumn fx:id="tableMotif" prefWidth="97.60003662109375" text="motif" />
-                  <TableColumn fx:id="tableComment" prefWidth="101.5999755859375" text="comment" />
-                  <TableColumn fx:id="tablePieces" minWidth="0.0" prefWidth="147.199951171875" text="pieces" />
-              </columns>
-            </TableView>
-         </children>
-      </Pane>
       <GridPane alignment="CENTER" prefHeight="238.0" prefWidth="1097.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="9.999951362609863" prefWidth="16.599971771240234" />
@@ -54,5 +38,12 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="209.0" text="Enregistrer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <TableView fx:id="tableMessage" prefHeight="200.0" prefWidth="817.0">
+        <columns>
+            <TableColumn fx:id="tableMessGarage" prefWidth="75.0" text="garagisteMess" />
+          <TableColumn fx:id="tableMessUser" prefWidth="64.79998779296875" text="UserMess" />
+            <TableColumn fx:id="tableMessageId" prefWidth="75.0" text="IdMess" />
+        </columns>
+      </TableView>
    </children>
 </VBox>

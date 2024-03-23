@@ -7,6 +7,8 @@ module com.example.garagemoto {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
-    opens com.example.garagemoto to javafx.fxml;
+    opens com.example.garagemoto.View to javafx.base;
+    opens com.example.garagemoto.Controller to javafx.fxml;
     exports com.example.garagemoto;
 }
+

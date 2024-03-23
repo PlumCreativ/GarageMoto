@@ -1,4 +1,4 @@
-package com.example.garagemoto.Model;
+package com.example.garagemoto.View;
 
 
 import javafx.beans.property.SimpleIntegerProperty;
@@ -12,10 +12,13 @@ public class ViewTablePieces {
     private SimpleIntegerProperty piecePrix;
 
     public ViewTablePieces(int _request_piecesId, String _pieceName, int _pieceType, int _piecePrix){
-        this.request_piecesId = new SimpleIntegerProperty(_request_piecesId);
         this.pieceName = new SimpleStringProperty(_pieceName);
         this.pieceType = new SimpleIntegerProperty(_pieceType);
         this.piecePrix = new SimpleIntegerProperty(_piecePrix);
+
+        if (_request_piecesId != 0) {
+            this.request_piecesId = new SimpleIntegerProperty(_request_piecesId) ;
+        }
 
     }
 

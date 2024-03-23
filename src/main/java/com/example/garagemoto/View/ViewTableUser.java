@@ -1,4 +1,4 @@
-package com.example.garagemoto.Model;
+package com.example.garagemoto.View;
 
 
 import javafx.beans.property.SimpleIntegerProperty;
@@ -8,17 +8,20 @@ public class ViewTableUser {
 
     private SimpleIntegerProperty request_userId;
     private SimpleStringProperty userName;
-    private SimpleStringProperty maile;
+    private SimpleStringProperty mail;
     private SimpleStringProperty adresse;
     private SimpleIntegerProperty telephoneNumber;
     
     //Constructor
-    public ViewTableUser(int _request_userId, String _userName, String _maile, String _adresse, int _telephoneNumber){
-        this.request_userId = new SimpleIntegerProperty(_request_userId);
+    public ViewTableUser(int _request_userId, String _userName, String _mail, String _adresse, int _telephoneNumber){
         this.userName = new SimpleStringProperty(_userName);
-        this.maile = new SimpleStringProperty(_maile);
+        this.mail = new SimpleStringProperty(_mail);
         this.adresse = new SimpleStringProperty(_adresse);
         this.telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
+
+        if (_request_userId != 0) {
+            this.request_userId = new SimpleIntegerProperty(_request_userId) ;
+        }
     }
     
     //Getters
@@ -31,7 +34,7 @@ public class ViewTableUser {
     }
 
     public SimpleStringProperty getMaile() {
-        return maile;
+        return mail;
     }
 
     public SimpleStringProperty getAdresse() {
@@ -51,8 +54,8 @@ public class ViewTableUser {
         this.userName = userName;
     }
 
-    public void setMaile(SimpleStringProperty maile) {
-        this.maile = maile;
+    public void setMaile(SimpleStringProperty mail) {
+        this.mail = mail;
     }
 
     public void setAdresse(SimpleStringProperty adresse) {
