@@ -1,15 +1,69 @@
 package com.example.garagemoto.View;
 
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class ViewTablePieces {
 
-    private SimpleIntegerProperty request_piecesId;
-    private SimpleStringProperty pieceName;
-    private SimpleIntegerProperty pieceType;
-    private SimpleIntegerProperty piecePrix;
+    private IntegerProperty request_piecesId;
+    private StringProperty pieceName;
+    private IntegerProperty pieceType;
+    private IntegerProperty piecePrix;
+
+
+    //Getters
+    public Integer getRequest_piecesId() {
+        return request_piecesId.get();
+    }
+
+    public String getPieceName() {
+        return pieceName.get();
+    }
+
+    public Integer getPieceType() {
+        return pieceType.get();
+    }
+
+    public Integer getPiecePrix() {
+        return piecePrix.get();
+    }
+
+    //Property's
+    public final IntegerProperty request_piecesidProperty() {
+        return request_piecesId;
+     }
+
+    public final StringProperty piecenameProperty() {
+        return pieceName;
+     }
+    
+    public final IntegerProperty piecetypeProperty() {
+        return pieceType;
+    }
+    
+    public final IntegerProperty pieceprixProperty() {
+        return piecePrix;
+    }
+
+    //Setters
+    public void setRequest_piecesId(int request_piecesId) {
+        this.request_piecesId.set(request_piecesId);
+    }
+
+    public void setPieceName(String pieceName) {
+        this.pieceName.set(pieceName);
+    }
+
+    public void setPieceType(Integer pieceType) {
+        this.pieceType.set(pieceType);;
+    }
+
+    public void setPiecePrix(int piecePrix) {
+        this.piecePrix.set(piecePrix);
+    }
 
     public ViewTablePieces(int _request_piecesId, String _pieceName, int _pieceType, int _piecePrix){
         this.pieceName = new SimpleStringProperty(_pieceName);
@@ -21,40 +75,4 @@ public class ViewTablePieces {
         }
 
     }
-
-    //Getters
-    public SimpleIntegerProperty getRequest_piecesId() {
-        return request_piecesId;
-    }
-
-    public SimpleStringProperty getPieceName() {
-        return pieceName;
-    }
-
-    public SimpleIntegerProperty getPieceType() {
-        return pieceType;
-    }
-
-    public SimpleIntegerProperty getPiecePrix() {
-        return piecePrix;
-    }
-
-
-    //Setters
-    public void setRequest_piecesId(SimpleIntegerProperty request_piecesId) {
-        this.request_piecesId = request_piecesId;
-    }
-
-    public void setPieceName(SimpleStringProperty pieceName) {
-        this.pieceName = pieceName;
-    }
-
-    public void setPieceType(SimpleIntegerProperty pieceType) {
-        this.pieceType = pieceType;
-    }
-
-    public void setPiecePrix(SimpleIntegerProperty piecePrix) {
-        this.piecePrix = piecePrix;
-    }
-
 }

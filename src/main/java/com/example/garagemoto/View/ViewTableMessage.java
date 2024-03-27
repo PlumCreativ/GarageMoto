@@ -8,8 +8,8 @@ import javafx.beans.property.StringProperty;
 public class ViewTableMessage {
 
     private IntegerProperty request_messageId;
-    private SimpleStringProperty mess_Garage;
-    private SimpleStringProperty mess_User;
+    private StringProperty mess_Garage;
+    private StringProperty mess_User;
 
     
     //Getters

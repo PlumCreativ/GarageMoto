@@ -2,36 +2,44 @@ package com.example.garagemoto.View;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class ViewTableManager {
 
-    private ViewTablePieces pieces;    
-    private ViewTableMessage message;    
-    private ViewTableUser user;    
-    private ViewTableGarage garage;    
+    private SimpleStringProperty PieceName;    
+    private SimpleStringProperty UserMess;    
+    private SimpleStringProperty GarageMess;    
+    private SimpleStringProperty UserName;    
     private SimpleIntegerProperty requestId; 
     private SimpleStringProperty requestMotif, requestComment;
 
 
     public ViewTableManager(
         int _requestId,
-        ViewTableGarage _garage,
-        ViewTableUser _user,
-        ViewTablePieces _pieces,
-        ViewTableMessage _message,
         String _requestMotif,
-        String _requestComment
+        String _requestComment,
+        String _messageGarage,
+        String _messageUser,
+        String _userName,
+        String _pieceName
+
         ) {
         this.requestMotif = new SimpleStringProperty(_requestMotif);
         this.requestComment = new SimpleStringProperty(_requestComment);
-        this.pieces = _pieces ;
-        this.garage = _garage ;
-        this.user = _user ;
-        this.message = _message ;
+        this.PieceName = new SimpleStringProperty(_pieceName);
+        this.GarageMess = new SimpleStringProperty(_messageGarage);
+        this.UserMess = new SimpleStringProperty(_messageUser);
+        this.UserName = new SimpleStringProperty(_userName);
 
         if (_requestId != 0) {
             this.requestId = new SimpleIntegerProperty(_requestId) ;
         }
+    }
+
+
+    public ViewTableManager(Integer requestId2, String requestComment2, String requestMotif2, String mess_Garage,
+            String mess_User, String userName2, String pieceName2) {
+        //TODO Auto-generated constructor stub
     }
 
 
@@ -48,21 +56,30 @@ public class ViewTableManager {
         return this.requestComment.get();
     }
 
-    public ViewTablePieces getPieces() {
-        return this.pieces;
+    public String getPieces() {
+        return this.PieceName.get();
     }
 
-    public ViewTableUser getUser() {
-        return this.user;
+    public String getUserName() {
+        return this.UserName.get();
     }
 
-    public ViewTableGarage getGarage() {
-        return this.garage;
+    public String getGarage() {
+        return this.GarageMess.get();
     }
 
-    public ViewTableMessage getMessage() {
-        return this.message;
+    public String getUser() {
+        return this.UserMess.get();
     }
+
+        //Property's
+    public final StringProperty requestMotifProperty() {
+        return requestMotif;
+     }
+
+    public final StringProperty requestCommentProperty() {
+        return requestComment;
+     }
 
 
     //Setters
@@ -79,20 +96,20 @@ public class ViewTableManager {
     }
 
 
-    public void setPieces(ViewTablePieces _pieces) {
-        this.pieces = _pieces;
+    public void setPieces(SimpleStringProperty _pieceName) {
+        this.PieceName = _pieceName;
     }
 
-    public void setUser(ViewTableUser _user) {
-        this.user = _user;
+    public void setUser(SimpleStringProperty _userName) {
+        this.UserName = _userName;
     }
 
-    public void setGarage(ViewTableGarage _garage) {
-        this.garage = _garage;
+    public void setGarage(SimpleStringProperty _messageGarage) {
+        this.GarageMess = _messageGarage;
     }
 
-    public void setMessage(ViewTableMessage message) {
-        this.message = message;
+    public void setMessage(SimpleStringProperty _messageUser) {
+        this.UserMess = _messageUser;
     }
 
 

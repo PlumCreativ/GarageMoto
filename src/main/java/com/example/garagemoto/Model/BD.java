@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-import com.example.garagemoto.View.ViewTableGarage;
 import com.example.garagemoto.View.ViewTableManager;
 import com.example.garagemoto.View.ViewTableMessage;
 import com.example.garagemoto.View.ViewTablePieces;
@@ -13,7 +12,7 @@ import com.example.garagemoto.View.ViewTableUser;
 
 public class BD{
 
-
+ 
     Connection conn = null;
     public static Connection DbConnection(){
 
@@ -90,10 +89,8 @@ public class BD{
     //     }
     // }
 
-    /**
-     * @return
-     */
-    public static ObservableList<ViewTableMessage> getAllRequest(){
+
+    public static ObservableList<ViewTableMessage> getMessageRequests(){
         Connection conn = DbConnection();
         PreparedStatement pr_stmt = null;
         ResultSet rs = null;
@@ -122,63 +119,69 @@ public class BD{
         }
         return list;
     }
-    // /**
-    //  * @return
-    //  */
-    // public static ObservableList<ViewTableManager> getAllRequest(){
-    //     Connection conn = DbConnection();
-    //     PreparedStatement pr_stmt = null;
-    //     ResultSet rs = null;
 
-    //     ObservableList<ViewTableManager> list = FXCollections.observableArrayList();
 
-    //     try{
-    //         String query = 
-    //         "SELECT * " +
-    //         "FROM rdv r JOIN garage g ON r.id_garage = g.id_garage " +
-    //         "JOIN message m ON r.id_message = m.id_message " +
-    //         "JOIN pieces p ON r.id_piece = p.id_piece " +
-    //         "JOIN user u ON r.id_user = u.id_user";
-    //         pr_stmt = conn.prepareStatement(query);
-    //         rs = pr_stmt.executeQuery();
-    //         while (rs.next()) {
-    //             list.add(
-    //                 new ViewTableManager(Integer.parseInt(rs.getString("id_rdv")),
-    //                     new ViewTableGarage(
-    //                         rs.getInt("id_garage"),
-    //                         rs.getString("NomGarage"),
-    //                         rs.getString("Adresse"),
-    //                         rs.getString("Email")),
 
-    //                     new ViewTableUser(
-    //                         rs.getInt("id_user"),
-    //                         rs.getString("NomUser"),
-    //                         rs.getString("Email"),
-    //                         rs.getString("adresse"),
-    //                         rs.getInt("num_telephone")),
 
-    //                     new ViewTablePieces(
-    //                         rs.getInt("id_piece"),
-    //                         rs.getString("nom_piece"),
-    //                         rs.getInt("prix_piece"),
-    //                         rs.getInt("type_piece")),
 
-    //                     new ViewTableMessage(
-    //                         rs.getInt("id_message"),
-    //                         rs.getString("messageGarage"),
-    //                         rs.getString("messageUser")),
+    public static ObservableList<ViewTableManager> getAllRequest(){
+        Connection conn = DbConnection();
+        PreparedStatement pr_stmt = null;
+        ResultSet rs = null;
 
-    //                     rs.getString("comment"),
-    //                     rs.getString("motif"))
-    //             );
-    //         }
-    //         conn.close();
-    //         pr_stmt.close();
+        ObservableList<ViewTableManager> list = FXCollections.observableArrayList();
 
-    //     }catch (SQLException e){
-    //         throw  new RuntimeException(e);
-    //     }
-    //     return list;
-    // }
+        try{
+            String query = 
+            "SELECT * " +
+            "FROM rdv r JOIN garage g ON r.id_garage = g.id_garage " +
+            "JOIN message m ON r.id_message = m.id_message " +
+            "JOIN pieces p ON r.id_piece = p.id_piece " +
+            "JOIN user u ON r.id_user = u.id_user";
+            pr_stmt = conn.prepareStatement(query);
+            rs = pr_stmt.executeQuery();
+            while (rs.next()) {
+                Integer requestId = Integer.parseInt(rs.getString("id_rdv"));
+
+                ViewTableUser tableUser = new ViewTableUser(
+                            rs.getInt("id_user"),
+                            rs.getString("NomUser"),
+                            rs.getString("Email"),
+                            rs.getString("adresse"),
+                            rs.getInt("num_telephone"));
+
+                ViewTablePieces tablePieces = new ViewTablePieces(
+                                rs.getInt("id_piece"),
+                                rs.getString("nom_piece"),
+                                rs.getInt("prix_piece"),
+                                rs.getInt("type_piece"));
+
+
+                ViewTableMessage tableMessage = new ViewTableMessage(
+                                    rs.getInt("id_message"),
+                                    rs.getString("messageGarage"),
+                                    rs.getString("messageUser"));
+                String  requestComment = rs.getString("comment");
+                String requestMotif = rs.getString("motif");
+                list.add(
+                    new ViewTableManager(
+                        requestId,                        
+                        requestComment,
+                        requestMotif,
+                        tableMessage.getMess_Garage(),
+                        tableMessage.getMess_User(),
+                        tablePieces.getPieceName(),
+                        tableUser.getUserName()
+                        )
+                );
+            }
+            conn.close();
+            pr_stmt.close();
+
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return list;
+    }
 
 }

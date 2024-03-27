@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="1127.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.Controller.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.Controller.HelloController">
    <children>
       <GridPane alignment="CENTER" prefHeight="238.0" prefWidth="1097.0">
         <columnConstraints>
@@ -38,11 +38,15 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="209.0" text="Enregistrer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <TableView fx:id="tableMessage" prefHeight="200.0" prefWidth="817.0">
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="817.0">
         <columns>
+            <TableColumn fx:id="tableId" prefWidth="75.0" text="Id" />
             <TableColumn fx:id="tableMessGarage" prefWidth="75.0" text="garagisteMess" />
           <TableColumn fx:id="tableMessUser" prefWidth="64.79998779296875" text="UserMess" />
-            <TableColumn fx:id="tableMessageId" prefWidth="75.0" text="IdMess" />
+            <TableColumn fx:id="tablePieceName" prefWidth="150.40003967285156" text="Nom de la Piece" />
+            <TableColumn fx:id="tableMotif" minWidth="0.0" prefWidth="0.0" text="Motif" />
+            <TableColumn fx:id="tableComment" prefWidth="75.0" text="Comment" />
+            <TableColumn fx:id="tableUserName" prefWidth="223.20001220703125" text="Nom de Client" />
         </columns>
       </TableView>
    </children>

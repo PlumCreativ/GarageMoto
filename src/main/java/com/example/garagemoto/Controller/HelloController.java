@@ -30,7 +30,7 @@ public class HelloController implements Initializable{
 
     //Table List
     @FXML
-    private ObservableList<ViewTableMessage> listRequest;
+    private ObservableList<ViewTableManager> listRequest;
 
     //Table Message
     @FXML
@@ -125,7 +125,6 @@ public class HelloController implements Initializable{
         tableMotif.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestMotif"));
         tableComment.setCellValueFactory(new PropertyValueFactory<ViewTableManager, String>("requestComment"));
         //Message
-        tableMessageId.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, Integer>("request_messageid")); 
 
         // tableMessGarage.setCellValueFactory(new Callback<CellDataFeatures<ViewTableManager,String>,ObservableValue<String>>(){
 
@@ -134,19 +133,19 @@ public class HelloController implements Initializable{
         //         return new SimpleStringProperty(param.getValue().getMessage().getMess_Garage());
         //     }
         // });       
-        tableMessUser.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_user"));        
-        tableMessGarage.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_garage"));        
+        tableMessUser.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("UserMess"));        
+        tableMessGarage.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("GarageMess"));        
         //Pieces
-        tablePieceName.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("pieceName"));
+        tablePieceName.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("PieceName"));
         //Garage
-        tableGarageName.setCellValueFactory(new PropertyValueFactory<ViewTableGarage, String>("garageName"));
+        // tableGarageName.setCellValueFactory(new PropertyValueFactory<ViewTableGarage, String>("garageName"));
 
         //User
-        tableUserName.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("userName"));
+        tableUserName.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("UserName "));
 
 
         listRequest = BD.getAllRequest();
-        tableMessage.setItems(listRequest);
+        tableView.setItems(listRequest);
 
     }
 
