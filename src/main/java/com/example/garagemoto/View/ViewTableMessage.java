@@ -7,21 +7,21 @@ import javafx.beans.property.StringProperty;
 
 public class ViewTableMessage {
 
-    private IntegerProperty request_messageId;
-    private StringProperty mess_Garage;
-    private StringProperty mess_User;
+    private static IntegerProperty request_messageId;
+    private static StringProperty mess_Garage;
+    private static StringProperty mess_User;
 
     
     //Getters
-    public Integer getRequest_messageId() {
+    public static Integer getRequest_messageId() {
         return request_messageId.get();
     }
 
-    public String getMess_Garage() {
+    public static String getMess_Garage() {
         return mess_Garage.get();
     }
     
-    public String getMess_User() {
+    public static String getMess_User() {
         return mess_User.get();
     }
 
@@ -44,7 +44,7 @@ public class ViewTableMessage {
     }
 
     public void setMess_Garage(String mess_Garage) {
-        this.mess_Garage.set(mess_Garage);
+        this.mess_Garage.set(getMess_Garage());
     }
 
     public void setMess_User(String mess_User) {
@@ -52,10 +52,14 @@ public class ViewTableMessage {
     }
 
     //Constructor
-    public ViewTableMessage(int _request_messageId, String _mess_Garage, String _mess_User){
+    public ViewTableMessage(
+        int _request_messageId, 
+        String _mess_Garage, 
+        String _mess_User
+        ){
 
         
-        this.mess_Garage = new SimpleStringProperty(_mess_Garage) ;
+        mess_Garage = new SimpleStringProperty(_mess_Garage) ;
         this.mess_User = new SimpleStringProperty(_mess_User) ;
 
         if (_request_messageId != 0) {
