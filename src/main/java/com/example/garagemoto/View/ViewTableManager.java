@@ -124,7 +124,7 @@ public class ViewTableManager {
     }
     
 
-    public static Integer getRequestId() {
+    public Integer getRequestId() {
         return requestId.get();
     }
 

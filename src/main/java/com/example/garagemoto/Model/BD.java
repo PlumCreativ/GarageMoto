@@ -2,6 +2,7 @@ package com.example.garagemoto.Model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
 import java.sql.*;
@@ -17,7 +18,6 @@ public class BD{
 
     static ObservableList<ViewTableManager> Displayable = FXCollections.observableArrayList();
  
-    static ObservableList<ViewTableManager> list = FXCollections.observableArrayList();
 
 
     Connection conn = null;
@@ -290,19 +290,25 @@ public class BD{
 
 
     //RDV Database Request
-    public static ObservableList<ViewTableManager> getRdvRequests(){
+    @FXML
+    public void getRdvRequests(){
         Connection conn = DbConnection();
         PreparedStatement pr_stmt = null;
         ResultSet rs = null;
-        list.clear();
+
+        ObservableList<ViewTableManager> list = FXCollections.observableArrayList();
+
 
         try{
             String query = 
             "SELECT * FROM rdv";
             pr_stmt = conn.prepareStatement(query);
             rs = pr_stmt.executeQuery();
+
+            list.clear();
+
             while (rs.next()) {
-                Integer requestId = Integer.parseInt(rs.getString("id_rdv"));
+                Integer requestId = rs.getInt("id_rdv");
 
                 String  requestComment = rs.getString("comment");
                 String requestMotif = rs.getString("motif");
@@ -322,15 +328,13 @@ public class BD{
                     + requestMotif +  " ."
                 );
 
-
             }
             conn.close();
             pr_stmt.close();
 
         }catch (SQLException e){
-            throw  new RuntimeException(e);
+            throw new RuntimeException(e);
         }
-        return list;
     }
 
 
