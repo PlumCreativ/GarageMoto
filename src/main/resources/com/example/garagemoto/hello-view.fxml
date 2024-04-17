@@ -40,7 +40,13 @@
       </GridPane>
       <TableView fx:id="tableView" prefHeight="200.0" prefWidth="817.0">
          <columns>
-            <TableColumn fx:id="tableId" prefWidth="75.0" text="Column X" />
+            <TableColumn fx:id="tableId" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="tableMotif" prefWidth="75.0" text="Motif" />
+            <TableColumn fx:id="tableComment" prefWidth="75.0" text="Comment" />
+            <TableColumn fx:id="tableUserName" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="tableUserEmail" prefWidth="75.0" text="Mail" />
+            <TableColumn fx:id="tableUserAdresse" prefWidth="75.0" text="adresse" />
+            <TableColumn fx:id="tableTelephoneNumber" prefWidth="75.0" text="telephone" />
          </columns></TableView>
    </children>
 </VBox>

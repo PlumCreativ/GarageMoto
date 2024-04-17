@@ -6,9 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ViewTableRdv {
-
-
+public class ViewTableRdv implements ViewTableManager{
 
     //Static Variables
     private static IntegerProperty requestId; 
@@ -32,44 +30,80 @@ public class ViewTableRdv {
 
 
     //Getters
-    public static int getRequestId() {
+    public int getRequestId() {
         return requestId.get();
     }
 
-    public static String getMotif() {
+    public String getMotif() {
         return requestMotif.get();
     }
 
-    public static String getComment() {
+    public String getComment() {
         return requestComment.get();
     }
 
 
     //Property's
-    public final StringProperty requestMotifProperty() {
+    public StringProperty requestMotifProperty() {
         return requestMotif;
      }
 
-    public final StringProperty requestCommentProperty() {
+    public StringProperty requestCommentProperty() {
         return requestComment;
      }
 
-    public final IntegerProperty requestidProperty() {
+    public IntegerProperty requestidProperty() {
         return requestId;
      }
 
 
     //Setters
-    public void setRequestId(SimpleIntegerProperty requestId) {
+    public void setRequestId(IntegerProperty requestId) {
         requestId.set(getRequestId());
     }
 
-    public void setMotif(SimpleStringProperty requestMotif) {
+    public void setMotif(StringProperty requestMotif) {
         requestMotif.set(getMotif());
     }
 
-    public void setComment(SimpleStringProperty requestComment) {
+    public void setComment(StringProperty requestComment) {
         requestComment.set(getComment());
+    }
+
+
+    //Implement class's
+    @Override
+    public int getRequest_userId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRequest_userId'");
+    }
+
+
+    @Override
+    public String getUserName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUserName'");
+    }
+
+
+    @Override
+    public String getMaile() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMaile'");
+    }
+
+
+    @Override
+    public String getAdresse() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAdresse'");
+    }
+
+
+    @Override
+    public int getTelephoneNumber() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTelephoneNumber'");
     }
 
 
