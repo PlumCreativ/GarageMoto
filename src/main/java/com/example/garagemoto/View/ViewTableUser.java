@@ -8,42 +8,48 @@ import javafx.beans.property.StringProperty;
 
 public class ViewTableUser {
 
-    private IntegerProperty request_userId;
-    private StringProperty userName;
-    private StringProperty mail;
-    private StringProperty adresse;
-    private IntegerProperty telephoneNumber;
+    private static IntegerProperty request_userId;
+    private static StringProperty userName;
+    private static StringProperty mail;
+    private static StringProperty adresse;
+    private static IntegerProperty telephoneNumber;
     
     //Constructor
-    public ViewTableUser(int _request_userId, String _userName, String _mail, String _adresse, int _telephoneNumber){
-        this.userName = new SimpleStringProperty(_userName);
-        this.mail = new SimpleStringProperty(_mail);
-        this.adresse = new SimpleStringProperty(_adresse);
-        this.telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
+    public ViewTableUser(
+        int _request_userId, 
+        String _userName, 
+        String _mail, 
+        String _adresse, 
+        int _telephoneNumber
+        ){
+        userName = new SimpleStringProperty(_userName);
+        mail = new SimpleStringProperty(_mail);
+        adresse = new SimpleStringProperty(_adresse);
+        telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
 
         if (_request_userId != 0) {
-            this.request_userId = new SimpleIntegerProperty(_request_userId) ;
+            request_userId = new SimpleIntegerProperty(_request_userId) ;
         }
     }
     
     //Getters
-    public Integer getRequest_userId() {
+    public static Integer getRequest_userId() {
         return request_userId.get();
     }
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName.get();
     }
 
-    public String getMaile() {
+    public static String getMaile() {
         return mail.get();
     }
 
-    public String getAdresse() {
+    public static String getAdresse() {
         return adresse.get();
     }
 
-    public Integer getTelephoneNumber() {
+    public static Integer getTelephoneNumber() {
         return telephoneNumber.get();
     }
 
