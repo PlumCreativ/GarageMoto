@@ -10,9 +10,11 @@ import com.example.garagemoto.View.ViewTableUser;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,10 +25,10 @@ public class HelloController implements Initializable{
 
     // //Functions
     @FXML
-    private TextField RequestAddTest;
+    private TextField motifField;
 
     @FXML
-    private TextField RequestUpdateTest;
+    private TextField commentField;
 
     //Table List
     @FXML
@@ -45,7 +47,7 @@ public class HelloController implements Initializable{
     @FXML
     private TableColumn<ViewTableMessage, String> tableMessUser;
 
-    // //Table User
+    //Table User
     @FXML
     private TableView<ViewTableUser> tableUser;
 
@@ -64,7 +66,7 @@ public class HelloController implements Initializable{
     @FXML
     private TableColumn<ViewTableUser, Integer> tableTelephoneNumber;
 
-    // //Table Garage
+    //Table Garage
     @FXML
     private TableView<ViewTableGarage> tableGarage;
 
