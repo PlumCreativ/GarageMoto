@@ -19,10 +19,16 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class HelloController implements Initializable{
+
+    ObservableList<ViewTableRdv> list = FXCollections.observableArrayList();
 
     // //Functions
     @FXML
@@ -107,13 +113,14 @@ public class HelloController implements Initializable{
     private TableView<ViewTableManager> tableView = new TableView<>();
 
     @FXML
-    private TableColumn<ViewTableManager, String> tableMotif;
+    private TableColumn<ViewTableRdv, String> tableMotif;
     
     @FXML
-    private TableColumn<ViewTableManager, String> tableComment;
+    private TableColumn<ViewTableRdv, String> tableComment;
 
     @FXML
-    private TableColumn<ViewTableManager, Integer> tableId;
+    private TableColumn<ViewTableRdv, Integer> tableId;
+
 
     Connection conn = null;
     PreparedStatement stmt = null;
@@ -122,68 +129,72 @@ public class HelloController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // ObservableList<ViewTableRdv> tableRdv = FXCollections.observableArrayList();
+        // tableRdv = BD.getRdvRequests();
         //Rdv        
-        TableColumn<ViewTableManager, String> tableMotif = new TableColumn<>("requestMotif");
-        tableMotif.setCellValueFactory(cellData -> cellData.getValue().requestmotifProperty());
+        tableId.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, Integer>("requestId"));
+        tableMotif.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, String>("requestMotif"));
+        tableComment.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, String>("requestComment"));
 
-        TableColumn<ViewTableManager, String> tableComment = new TableColumn<>("requestComment");
-        tableComment.setCellValueFactory(cellData -> cellData.getValue().requestcommentProperty());
+        // TableColumn<ViewTableRdv, String> tableMotif = new TableColumn<>("requestMotif");
+        // tableMotif.setCellValueFactory(cellData -> cellData.getValue().requestMotifProperty());
 
-        // TableColumn<ViewTableManager, Integer> tableId = new TableColumn<>("requestId");
-        // tableId.setCellValueFactory(cellData -> cellData.getValue().requestidProperty());
+        // TableColumn<ViewTableRdv, String> tableComment = new TableColumn<>("requestComment");
+        // tableComment.setCellValueFactory(cellData -> cellData.getValue().requestCommentProperty());
 
-        tableId.setCellValueFactory(new PropertyValueFactory<ViewTableManager, Integer>("requestId"));
 
         //Message
-        TableColumn<ViewTableManager, String> tableMessGarage = new TableColumn<>("mess_Garage");
-        tableMessGarage.setCellValueFactory(cellData -> cellData.getValue().mess_garageProperty());
+        // TableColumn<ViewTableManager, String> tableMessGarage = new TableColumn<>("mess_Garage");
+        // tableMessGarage.setCellValueFactory(cellData -> cellData.getValue().mess_garageProperty());
 
-        TableColumn<ViewTableManager, String> tableMessUser = new TableColumn<>("mess_User");
-        tableMessUser.setCellValueFactory(cellData -> cellData.getValue().mess_userProperty());
+        // TableColumn<ViewTableManager, String> tableMessUser = new TableColumn<>("mess_User");
+        // tableMessUser.setCellValueFactory(cellData -> cellData.getValue().mess_userProperty());
 
         //Pieces        
-        TableColumn<ViewTableManager, String> tablePieceName = new TableColumn<>("PieceName");
-        tablePieceName.setCellValueFactory(cellData -> cellData.getValue().piecenameProperty());
+        // TableColumn<ViewTableManager, String> tablePieceName = new TableColumn<>("PieceName");
+        // tablePieceName.setCellValueFactory(cellData -> cellData.getValue().piecenameProperty());
         
         //Garage
         //TODO---------------------------------------------------------------------------------------------------------------------------
 
         //User
-        TableColumn<ViewTableManager, String> tableUserName = new TableColumn<>("UserName");
-        tableUserName.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
+        tableUserName.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("userName")) ;
+        tableUserEmail.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("mail")) ;
+        tableUserAdresse.setCellValueFactory(new PropertyValueFactory<ViewTableUser, String>("adresse")) ;
+        tableTelephoneNumber.setCellValueFactory(new PropertyValueFactory<ViewTableUser, Integer>("telephoneNumber")) ;
 
         //Displayable Liste
-        // ObservableList<ViewTableManager> Displayable = FXCollections.observableArrayList();
-        // Displayable.addAll(
-        //     BD.getRdvRequests()
-        // );
+        // List<ViewTableRdv> rdvList = new ArrayList<>();
+        ObservableList<ViewTableManager> Displayable = FXCollections.observableArrayList();
+        Displayable.addAll(
+            BD.getRdvRequests()
+        );
 
-        tableView.getColumns().addAll(
+        Displayable.addAll(            
+            BD.getUserRequests()
+        );
 
-            //Piece
-            tablePieceName,
+        // tableView.getColumns().addAll(
+
+        //     //Piece
+        //     tablePieceName,
             
-            //User
-            tableUserName, 
+        //     //User
+        //     tableUserName, 
             
-            //RDV
-            tableMotif, 
-            tableComment,
+        //     //RDV
+        //     tableMotif, 
+        //     tableComment,
 
-            //Garage
-            tableMessGarage, 
-            tableMessUser
+        //     //Garage
+        //     tableMessGarage, 
+        //     tableMessUser
             
 
-            // tableId
+        //     // tableId
             
-            );
-
-
-        listRequest = BD.Displayable();
-
-        tableView.setItems(listRequest);
+        //     );
+        tableView.setItems(Displayable);
 
     }
-
 }
