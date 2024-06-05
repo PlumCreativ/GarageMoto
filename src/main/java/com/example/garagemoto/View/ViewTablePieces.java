@@ -8,26 +8,26 @@ import javafx.beans.property.StringProperty;
 
 public class ViewTablePieces {
 
-    private IntegerProperty request_piecesId;
-    private StringProperty pieceName;
-    private IntegerProperty pieceType;
-    private IntegerProperty piecePrix;
+    private static IntegerProperty request_piecesId;
+    private static StringProperty pieceName;
+    private static IntegerProperty pieceType;
+    private static IntegerProperty piecePrix;
 
 
     //Getters
-    public Integer getRequest_piecesId() {
+    public static Integer getRequest_piecesId() {
         return request_piecesId.get();
     }
 
-    public String getPieceName() {
+    public static String getPieceName() {
         return pieceName.get();
     }
 
-    public Integer getPieceType() {
+    public static Integer getPieceType() {
         return pieceType.get();
     }
 
-    public Integer getPiecePrix() {
+    public static Integer getPiecePrix() {
         return piecePrix.get();
     }
 
@@ -49,29 +49,34 @@ public class ViewTablePieces {
     }
 
     //Setters
-    public void setRequest_piecesId(int request_piecesId) {
-        this.request_piecesId.set(request_piecesId);
+    public void setRequest_piecesId(Integer request_piecesId) {
+        this.request_piecesId.set(getRequest_piecesId());
     }
 
     public void setPieceName(String pieceName) {
-        this.pieceName.set(pieceName);
+        this.pieceName.set(getPieceName());
     }
 
     public void setPieceType(Integer pieceType) {
-        this.pieceType.set(pieceType);;
+        this.pieceType.set(getPieceType());;
     }
 
     public void setPiecePrix(int piecePrix) {
-        this.piecePrix.set(piecePrix);
+        this.piecePrix.set(getPiecePrix());
     }
 
-    public ViewTablePieces(int _request_piecesId, String _pieceName, int _pieceType, int _piecePrix){
-        this.pieceName = new SimpleStringProperty(_pieceName);
-        this.pieceType = new SimpleIntegerProperty(_pieceType);
-        this.piecePrix = new SimpleIntegerProperty(_piecePrix);
+    public ViewTablePieces(
+        int request_piecesId, 
+        String pieceName, 
+        int pieceType, 
+        int piecePrix
+        )   {
+        this.pieceName = new SimpleStringProperty(pieceName);
+        this.pieceType = new SimpleIntegerProperty(pieceType);
+        this.piecePrix = new SimpleIntegerProperty(piecePrix);
 
-        if (_request_piecesId != 0) {
-            this.request_piecesId = new SimpleIntegerProperty(_request_piecesId) ;
+        if (request_piecesId != 0) {
+            this.request_piecesId = new SimpleIntegerProperty(request_piecesId) ;
         }
 
     }

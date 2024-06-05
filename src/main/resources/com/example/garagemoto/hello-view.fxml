@@ -78,15 +78,14 @@
          </children>
       </GridPane>
       <TableView fx:id="tableView" prefHeight="200.0" prefWidth="817.0">
-        <columns>
+         <columns>
             <TableColumn fx:id="tableId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="tableMessGarage" prefWidth="75.0" text="garagisteMess" />
-          <TableColumn fx:id="tableMessUser" prefWidth="64.79998779296875" text="UserMess" />
-            <TableColumn fx:id="tablePieceName" prefWidth="150.40003967285156" text="Nom de la Piece" />
-            <TableColumn fx:id="tableMotif" minWidth="0.0" prefWidth="0.0" text="Motif" />
+            <TableColumn fx:id="tableMotif" prefWidth="75.0" text="Motif" />
             <TableColumn fx:id="tableComment" prefWidth="75.0" text="Comment" />
-            <TableColumn fx:id="tableUserName" prefWidth="223.20001220703125" text="Nom de Client" />
-        </columns>
-      </TableView>
+            <TableColumn fx:id="tableUserName" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="tableUserEmail" prefWidth="75.0" text="Mail" />
+            <TableColumn fx:id="tableUserAdresse" prefWidth="75.0" text="adresse" />
+            <TableColumn fx:id="tableTelephoneNumber" prefWidth="75.0" text="telephone" />
+         </columns></TableView>
    </children>
 </VBox>

@@ -6,6 +6,8 @@ module com.example.garagemoto {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires javafx.base;
+    requires mysql.connector.j;
 
     opens com.example.garagemoto.View to javafx.base;
     opens com.example.garagemoto.Controller to javafx.fxml;

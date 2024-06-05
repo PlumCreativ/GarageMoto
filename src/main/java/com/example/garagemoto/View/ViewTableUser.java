@@ -6,65 +6,71 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ViewTableUser {
+public class ViewTableUser implements ViewTableManager{
 
-    private IntegerProperty request_userId;
-    private StringProperty userName;
-    private StringProperty mail;
-    private StringProperty adresse;
-    private IntegerProperty telephoneNumber;
+    private  IntegerProperty request_userId;
+    private  StringProperty userName;
+    private  StringProperty mail;
+    private  StringProperty adresse;
+    private  IntegerProperty telephoneNumber;
     
     //Constructor
-    public ViewTableUser(int _request_userId, String _userName, String _mail, String _adresse, int _telephoneNumber){
-        this.userName = new SimpleStringProperty(_userName);
-        this.mail = new SimpleStringProperty(_mail);
-        this.adresse = new SimpleStringProperty(_adresse);
-        this.telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
+    public ViewTableUser(
+        int _request_userId, 
+        String _userName, 
+        String _mail, 
+        String _adresse, 
+        int _telephoneNumber
+        ){
+        userName = new SimpleStringProperty(_userName);
+        mail = new SimpleStringProperty(_mail);
+        adresse = new SimpleStringProperty(_adresse);
+        telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
 
         if (_request_userId != 0) {
-            this.request_userId = new SimpleIntegerProperty(_request_userId) ;
+            request_userId = new SimpleIntegerProperty(_request_userId) ;
         }
     }
     
     //Getters
-    public Integer getRequest_userId() {
+    public int getRequest_userId() {
         return request_userId.get();
     }
 
-    public String getUserName() {
+    public  String getUserName() {
         return userName.get();
     }
 
-    public String getMaile() {
+    public  String getMaile() {
         return mail.get();
     }
 
-    public String getAdresse() {
+    public  String getAdresse() {
         return adresse.get();
     }
 
-    public Integer getTelephoneNumber() {
+    public  int getTelephoneNumber() {
         return telephoneNumber.get();
     }
 
     //Property's
-    public final IntegerProperty request_useridProperty() {
+    public  IntegerProperty request_useridProperty() {
         return request_userId;
      }
 
-    public final StringProperty usernameProperty() {
+    public  StringProperty usernameProperty() {
         return userName;
      }
     
-    public final StringProperty mailProperty() {
+    public  StringProperty mailProperty() {
         return mail;
     }
     
-    public final StringProperty adresseProperty() {
+    public  StringProperty adresseProperty() {
         return adresse;
     }
 
-    public final IntegerProperty telephonenumberProperty() {
+    public  IntegerProperty telephonenumberProperty() {
         return telephoneNumber;
     }
 
@@ -87,6 +93,26 @@ public class ViewTableUser {
 
     public void setTelephoneNumber(int telephoneNumber) {
         this.telephoneNumber.set(telephoneNumber);;
+    }
+
+
+    //implement class's
+    @Override
+    public int getRequestId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRequestId'");
+    }
+
+    @Override
+    public String getMotif() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMotif'");
+    }
+
+    @Override
+    public String getComment() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getComment'");
     }
     
 }
