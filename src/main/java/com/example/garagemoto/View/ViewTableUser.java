@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ViewTableUser implements ViewTableManager{
+public class ViewTableUser{
 
     private  IntegerProperty request_userId;
     private  StringProperty userName;
@@ -95,24 +95,4 @@ public class ViewTableUser implements ViewTableManager{
         this.telephoneNumber.set(telephoneNumber);;
     }
 
-
-    //implement class's
-    @Override
-    public int getRequestId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRequestId'");
-    }
-
-    @Override
-    public String getMotif() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMotif'");
-    }
-
-    @Override
-    public String getComment() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getComment'");
-    }
-    
 }

@@ -22,25 +22,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class HelloController implements Initializable{
 
-    ObservableList<ViewTableRdv> list = FXCollections.observableArrayList();
-
-    // //Functions
+    //Functions
     @FXML
     private TextField motifField;
 
     @FXML
     private TextField commentField;
 
-    //Table List
-    ObservableList<ViewTableManager> listRequest;
+    //Pieces variables
+    @FXML
+    private ChoiceBox<ViewTablePieces> choicePiece;
+
+    
 
     //Table Message
     @FXML
@@ -90,7 +88,7 @@ public class HelloController implements Initializable{
     @FXML
     private TableColumn<ViewTableGarage, String> tableGarageEmail;
 
-    // //Table Pieces
+    //Table Pieces
 
     @FXML
     private TableView<ViewTablePieces> tablePieces;
@@ -110,7 +108,7 @@ public class HelloController implements Initializable{
     //ObservableListe
 
     
-    // //Table Manager
+    //Table Manager
     @FXML
     private TableView<ViewTableManager> tableView = new TableView<>();
 
@@ -131,30 +129,18 @@ public class HelloController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // ObservableList<ViewTableRdv> tableRdv = FXCollections.observableArrayList();
-        // tableRdv = BD.getRdvRequests();
         //Rdv        
-        tableId.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, Integer>("requestId"));
         tableMotif.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, String>("requestMotif"));
         tableComment.setCellValueFactory(new PropertyValueFactory<ViewTableRdv, String>("requestComment"));
 
-        // TableColumn<ViewTableRdv, String> tableMotif = new TableColumn<>("requestMotif");
-        // tableMotif.setCellValueFactory(cellData -> cellData.getValue().requestMotifProperty());
-
-        // TableColumn<ViewTableRdv, String> tableComment = new TableColumn<>("requestComment");
-        // tableComment.setCellValueFactory(cellData -> cellData.getValue().requestCommentProperty());
-
-
         //Message
-        // TableColumn<ViewTableManager, String> tableMessGarage = new TableColumn<>("mess_Garage");
-        // tableMessGarage.setCellValueFactory(cellData -> cellData.getValue().mess_garageProperty());
-
-        // TableColumn<ViewTableManager, String> tableMessUser = new TableColumn<>("mess_User");
-        // tableMessUser.setCellValueFactory(cellData -> cellData.getValue().mess_userProperty());
+        tableMessGarage.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_Garage"));
+        tableMessUser.setCellValueFactory(new PropertyValueFactory<ViewTableMessage, String>("mess_User"));
 
         //Pieces        
-        // TableColumn<ViewTableManager, String> tablePieceName = new TableColumn<>("PieceName");
-        // tablePieceName.setCellValueFactory(cellData -> cellData.getValue().piecenameProperty());
+        tablePieceName.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("PieceName"));
+        tablePiecePrix.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, Integer>("piecePrix"));
+        tablePieceType.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, Integer>("pieceType"));
         
         //Garage
         //TODO---------------------------------------------------------------------------------------------------------------------------
@@ -168,14 +154,10 @@ public class HelloController implements Initializable{
         //Displayable Liste
         // List<ViewTableRdv> rdvList = new ArrayList<>();
         ObservableList<ViewTableManager> Displayable = FXCollections.observableArrayList();
+
         Displayable.addAll(
-            BD.getRdvRequests()
+            BD.getAllRequest()
         );
-
-        Displayable.addAll(            
-            BD.getUserRequests()
-        );
-
         // tableView.getColumns().addAll(
 
         //     //Piece
@@ -199,4 +181,49 @@ public class HelloController implements Initializable{
         tableView.setItems(Displayable);
 
     }
+
+
+    @FXML
+    private void initialiseChoiceBox() throws SQLException {
+        this.choicePiece.getItems().clear();
+        BD piceBD = new BD();
+
+
+        ViewTablePieces allRequests = piceBD.getPiecesRequests();
+
+        // while (allRequests.next()) {
+        //     int id_piece = allRequests.getInt("id_piece");
+        //     String NomPiece = allRequests.getString("nom_piece");
+        //     int PrixPiece = allRequests.getInt("prix_piece");
+        //     int TypePiece = allRequests.getInt("type_piece");
+        //     ViewTablePieces pieceObject = new ViewTablePieces(
+        //         id_piece, 
+        //         NomPiece, 
+        //         PrixPiece, 
+        //         TypePiece);
+            
+        //     System.out.println(
+        //         "id    :" + id_piece 
+        //         + "  Nom de la piece  :" 
+        //         + NomPiece + "  prix de la piece : " 
+        //         + PrixPiece + " type de piece " 
+        //         + TypePiece + " ."
+        //     );
+        //}
+        this.choicePiece.getItems().addAll(allRequests);        
+        
+
+    }
+
+
+    // public void setTaskData(ActionEvent event) {
+
+    //     ViewTablePieces selectedPiece = choicePiece.getValue();
+
+    //     this.TaskUpdateTest.setText(selectedPiece.getPieceName());
+    //     this.infinisCheckUpdate.setSelected(selectedPiece.getPieceType());
+    //     this.infinisCheckUpdate.setSelected(selectedPiece.getPieceType());
+
+        
+    // }
 }

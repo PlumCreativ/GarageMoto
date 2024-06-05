@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.List;
 
 import com.example.garagemoto.View.ViewTableGarage;
+import com.example.garagemoto.View.ViewTableManager;
 import com.example.garagemoto.View.ViewTableRdv;
 import com.example.garagemoto.View.ViewTableMessage;
 import com.example.garagemoto.View.ViewTablePieces;
@@ -17,6 +18,8 @@ import com.example.garagemoto.View.ViewTableUser;
 public class BD{
 
     // static ObservableList<ViewTableManager> Displayable = FXCollections.observableArrayList();
+    static ViewTablePieces pieceObject;
+    static ViewTableUser userlist;
  
 
 
@@ -34,67 +37,72 @@ public class BD{
 
     }
 
-    // public void addRDVRequest(ViewTableRdv requestInfo){
-    //     Connection conn = null;
-    //     PreparedStatement stmt = null;
 
-    //     try {
-    //         conn = DbConnection();
-    //         String query = "INSERT INTO rdv(motif, comment) VALUES (?, ?)";
-    //         stmt = conn.prepareStatement(query);
-    //         stmt.setString(1, ViewTableRdv.getMotif());
-    //         stmt.setString(2, ViewTableRdv.getComment());
+    //Add methods 
+    public void addRDVRequest(ViewTableRdv requestInfo){
+        Connection conn = null;
+        PreparedStatement stmt = null;
 
-    //         stmt.execute();
-    //         stmt.close();
-    //         conn.close();
+        try {
+            conn = DbConnection();
+            String query = "INSERT INTO rdv(motif, comment) VALUES (?, ?)";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, requestInfo.getMotif());
+            stmt.setString(2, requestInfo.getComment());
 
-    //     }catch (SQLException e){
-    //         throw  new RuntimeException(e);
-    //     }
-    // }
+            stmt.execute();
+            stmt.close();
+            conn.close();
 
-    // public void updateRDVRequest(ViewTableRdv requestInfo){
-    //     Connection conn = null;
-    //     PreparedStatement stmt = null;
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+    }
 
-    //     try{
-    //         conn = DbConnection();
-    //         String query = "UPDATE `rdv` SET motif = ?, comment = ? WHERE id = ?";
-    //         stmt = conn.prepareStatement(query);
-    //         stmt.setString(1, ViewTableRdv.getMotif());
-    //         stmt.setString(2, ViewTableRdv.getComment());
-    //         stmt.setInt(3, ViewTableRdv.getRequestId());
+    public void updateRDVRequest(ViewTableRdv requestInfo){
+        Connection conn = null;
+        PreparedStatement stmt = null;
 
-    //         //Execute & Close Request
-    //         stmt.executeUpdate();
-    //         stmt.close();
-    //         conn.close();
+        try{
+            conn = DbConnection();
+            String query = "UPDATE `rdv` SET motif = ?, comment = ? WHERE id = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, requestInfo.getMotif());
+            stmt.setString(2, requestInfo.getComment());
+            stmt.setInt(3, requestInfo.getRequestId());
 
-    //     }catch (SQLException e){
-    //         throw  new RuntimeException(e);
-    //     }
-    // }
+            //Execute & Close Request
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
 
-    // public void delateRequest(int taskId){
-    //     Connection conn = null;
-    //     PreparedStatement stmt = null;
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+    }
 
-    //     try{
-    //         conn = DbConnection();
-    //         String query = "DELETE FROM rdv WHERE id = ?";
-    //         stmt = conn.prepareStatement(query);
-    //         stmt.setInt(1, ViewTableRdv.getRequestId());
+    public void delateRequest(int taskId){
+        Connection conn = null;
+        PreparedStatement stmt = null;
 
-    //         //Execute & Close Request
-    //         stmt.executeUpdate();
-    //         stmt.close();
-    //         conn.close();
-    //     }catch (SQLException e){
-    //         throw  new RuntimeException(e);
-    //     }
-    // }
+        try{
+            conn = DbConnection();
+            String query = "DELETE FROM rdv WHERE id = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, taskId);
 
+            //Execute & Close Request
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+    }
+
+
+
+    
     //Message Database Request
     public void getMessageRequests(){
         Connection conn = DbConnection();
@@ -133,54 +141,50 @@ public class BD{
 
 
     //Piece Database Request
-    public void getPiecesRequests(){
+    public ViewTablePieces getPiecesRequests(){
         Connection conn = DbConnection();
-        PreparedStatement pr_stmt = null;
+        Statement stmt = null;
         ResultSet rs = null;
-
-        // ObservableList<ViewTablePieces> list = FXCollections.observableArrayList();
-
+        
         try{
             String query = 
             "SELECT * FROM pieces";
-            pr_stmt = conn.prepareStatement(query);
-            rs = pr_stmt.executeQuery();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            
             while (rs.next()) {
                 Integer id_piece = rs.getInt("id_piece");
                 String NomPiece = rs.getString("nom_piece");
                 Integer PrixPiece = rs.getInt("prix_piece");
                 Integer TypePiece = rs.getInt("type_piece");
-                new ViewTablePieces(
+                pieceObject = new ViewTablePieces(
                     id_piece, 
                     NomPiece, 
                     PrixPiece, 
                     TypePiece);
-                // list.add(
-                //     );
-                    System.out.println(
-                        "id    :" + id_piece 
-                        + "  Nom de la piece  :" 
-                        + NomPiece + "  prix de la piece : " 
-                        + PrixPiece + " type de piece " 
-                        + TypePiece + " ."
-                    );
+             
+                System.out.println(
+                    "id    :" + id_piece 
+                    + "  Nom de la piece  :" 
+                    + NomPiece + "  prix de la piece : " 
+                    + PrixPiece + " type de piece " 
+                    + TypePiece + " ."
+                );
             }
-            conn.close();
-            pr_stmt.close();
-
+            return pieceObject;
+            
         }catch (SQLException e){
             throw  new RuntimeException(e);
         }
-
+        
     }
 
     //User Database Request
-    public static ObservableList<ViewTableUser> getUserRequests(){
+    public static ViewTableUser getUserRequests(){
         Connection conn = DbConnection();
         Statement pr_stmt = null;
         ResultSet rs = null;
 
-        ObservableList<ViewTableUser> list = FXCollections.observableArrayList();
 
 
         try{
@@ -189,9 +193,7 @@ public class BD{
             pr_stmt = conn.createStatement();
             rs = pr_stmt.executeQuery(query);
 
-            list.clear();
 
-            ViewTableUser userlist;
             while (rs.next()) {
                 Integer id_user = rs.getInt("id_user");
                 String UserName = rs.getString("NomUser");
@@ -207,7 +209,6 @@ public class BD{
                     TellNum
                 );
 
-                list.add(userlist);
 
                 System.out.println(
                     "id    :" + id_user 
@@ -225,7 +226,7 @@ public class BD{
             throw new RuntimeException(e);
         }
 
-        return list;
+        return userlist;
     }
 
     //Garage Database Request
@@ -318,21 +319,85 @@ public class BD{
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return list;
-
         
+        return list;
     }
 
+    public static ObservableList<ViewTableManager> getAllRequest(){
+    Connection conn = DbConnection();
+    PreparedStatement pr_stmt = null;
+    ResultSet rs = null;
 
-    // public static ObservableList<ViewTableManager> Displayable(){
-    //     Displayable.addAll(
-    //         getMessageRequests(),
-    //         getPiecesRequests()
-    //         );
+    // Creation of table Manager list
+    //keep data from different tables but of the same Class type
+    ObservableList<ViewTableManager> list = FXCollections.observableArrayList();
 
+        try{
+            String query = 
+            "SELECT * " + // Selection of all database tables needed to fill tableView
+            "FROM rdv r JOIN garage g ON r.id_garage = g.id_garage " +
+            "JOIN message m ON r.id_message = m.id_message " +
+            "JOIN pieces p ON r.id_piece = p.id_piece " +
+            "JOIN user u ON r.id_user = u.id_user";
+            pr_stmt = conn.prepareStatement(query);
+            rs = pr_stmt.executeQuery();
 
-    //     return Displayable;
+            ViewTableManager managerlist;
+            while (rs.next()) {
 
-    // }
+                //rdv data
+                Integer requestId = rs.getInt("id_rdv");
+                String  requestComment = rs.getString("comment");
+                String requestMotif = rs.getString("motif");
+
+                //User data
+                Integer id_user = rs.getInt("id_user");
+                String UserName = rs.getString("NomUser");
+                String UserEmail = rs.getString("Email");
+                String UserAdresse = rs.getString("adresse");
+                Integer TellNum = rs.getInt("num_telephone");
+
+                //Pieces data
+                Integer id_piece = rs.getInt("id_piece");
+                String NomPiece = rs.getString("nom_piece");
+                Integer PrixPiece = rs.getInt("prix_piece");
+                Integer TypePiece = rs.getInt("type_piece");
+
+                //Message data
+                Integer id_message = rs.getInt("id_message");
+                String mess_Garage = rs.getString("messageGarage");
+                String mess_User = rs.getString("messageUser");
+                //Creation Manager Object
+                managerlist = new ViewTableManager(
+                    requestMotif,                      
+                    requestComment,
+                    
+                    UserName, 
+                    UserEmail, 
+                    UserAdresse,
+                    TellNum,
+
+                    NomPiece, 
+                    PrixPiece, 
+                    TypePiece,
+
+                    mess_Garage,
+                    mess_User
+                );
+
+                //add the Object to the list to return him later
+                list.addAll(managerlist);
+
+            }
+            conn.close();
+            pr_stmt.close();
+            //After request close all access to database
+
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+        return list;
+    }
 
 }
+

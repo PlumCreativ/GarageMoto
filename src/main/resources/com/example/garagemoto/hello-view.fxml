@@ -77,15 +77,24 @@
             </TextArea>
          </children>
       </GridPane>
-      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="817.0">
+      <TableView fx:id="tableView" prefHeight="481.0" prefWidth="1720.0">
          <columns>
-            <TableColumn fx:id="tableId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="tableMotif" prefWidth="75.0" text="Motif" />
-            <TableColumn fx:id="tableComment" prefWidth="75.0" text="Comment" />
-            <TableColumn fx:id="tableUserName" prefWidth="75.0" text="Nom" />
-            <TableColumn fx:id="tableUserEmail" prefWidth="75.0" text="Mail" />
-            <TableColumn fx:id="tableUserAdresse" prefWidth="75.0" text="adresse" />
-            <TableColumn fx:id="tableTelephoneNumber" prefWidth="75.0" text="telephone" />
-         </columns></TableView>
+            <TableColumn fx:id="tableMotif" prefWidth="136.0" text="Motif" />
+            <TableColumn fx:id="tableComment" prefWidth="118.4000244140625" text="Comment" />
+            <TableColumn fx:id="tableUserName" minWidth="4.0" prefWidth="113.5999755859375" text="Nom" />
+            <TableColumn fx:id="tableUserEmail" minWidth="0.0" prefWidth="98.4000244140625" text="Mail" />
+            <TableColumn fx:id="tableUserAdresse" prefWidth="135.99993896484375" text="adresse" />
+            <TableColumn fx:id="tableTelephoneNumber" prefWidth="173.60003662109375" text="telephone" />
+            <TableColumn fx:id="tablePieceName" minWidth="7.2000732421875" prefWidth="301.60009765625" text="Piece">
+               <columns>
+                  <TableColumn fx:id="tablePieceName" prefWidth="180.800048828125" text="Nom" />
+                  <TableColumn fx:id="tablePieceType" prefWidth="163.199951171875" text="Type" />
+                  <TableColumn fx:id="tablePiecePrix" minWidth="0.800048828125" prefWidth="86.4000244140625" text="Prix" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="tableMessGarage" minWidth="0.800048828125" prefWidth="272.0" text="Garage message" />
+            <TableColumn fx:id="tableMessUser" minWidth="0.800048828125" prefWidth="237.60009765625" text="User message" />
+         </columns>
+      </TableView>
    </children>
 </VBox>
