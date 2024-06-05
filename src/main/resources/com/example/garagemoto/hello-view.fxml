@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,42 +12,89 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.Controller.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.garagemoto.Controller.HelloController">
    <children>
       <GridPane alignment="CENTER" prefHeight="238.0" prefWidth="1097.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="9.999951362609863" prefWidth="16.599971771240234" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="532.8000486373901" minWidth="10.0" prefWidth="208.79999084472655" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="555.1999359130859" minWidth="10.0" prefWidth="65.5999755859375" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="475.1999755859375" minWidth="10.0" prefWidth="219.00007324218745" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.20002441406245" minWidth="10.0" prefWidth="57.40004882812502" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.59997558593744" minWidth="10.0" prefWidth="248.2000549316407" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="9.999951362609863" prefWidth="256.000048828125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="576.4000000000001" minWidth="10.0" prefWidth="246.80002441406253" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="783.4000244140625" minWidth="0.0" prefWidth="235.5999755859375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1337.400048828125" minWidth="10.0" prefWidth="446.0000244140625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="913.6000732421875" minWidth="10.0" prefWidth="192.4000244140625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="402.4000488281249" minWidth="10.0" prefWidth="195.99995117187495" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.59997558593744" minWidth="10.0" prefWidth="156.800048828125" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="25.799993896484374" minHeight="10.0" prefHeight="25.000006103515624" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="50.9999755859375" minHeight="10.0" prefHeight="38.59999389648438" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="39.80002059936524" minHeight="10.0" prefHeight="35.80002059936524" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="45.400000000000006" minHeight="10.0" prefHeight="45.400000000000006" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="77.6" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="93.6" minHeight="0.0" prefHeight="48.00000915527343" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="95.199951171875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="109.60000762939453" minHeight="10.0" prefHeight="58.400048828124994" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="37.000024414062494" minHeight="10.0" prefHeight="37.000024414062494" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefWidth="86.0" promptText="Motif" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Commetaires" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ChoiceBox prefHeight="26.0" prefWidth="230.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="219.0" text="Supprimer" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="231.0" text="Changer" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="209.0" text="Enregistrer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField alignment="CENTER" prefWidth="86.0" promptText="Motif" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Commetaires" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </TextArea>
+            <ChoiceBox fx:id="choicePiece" onDragDetected="#initialiseChoiceBox" prefHeight="26.0" prefWidth="230.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Supprimer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Changer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Enregistrer" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField alignment="CENTER" promptText="Client" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="423.0" layoutY="21.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="423.0" layoutY="100.0" promptText="Mail" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField alignment="CENTER" promptText="Adresse" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextArea prefHeight="200.0" prefWidth="200.0" promptText="User Message" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </TextArea>
          </children>
       </GridPane>
-      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="817.0">
+      <TableView fx:id="tableView" prefHeight="481.0" prefWidth="1720.0">
          <columns>
-            <TableColumn fx:id="tableId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="tableMotif" prefWidth="75.0" text="Motif" />
-            <TableColumn fx:id="tableComment" prefWidth="75.0" text="Comment" />
-            <TableColumn fx:id="tableUserName" prefWidth="75.0" text="Nom" />
-            <TableColumn fx:id="tableUserEmail" prefWidth="75.0" text="Mail" />
-            <TableColumn fx:id="tableUserAdresse" prefWidth="75.0" text="adresse" />
-            <TableColumn fx:id="tableTelephoneNumber" prefWidth="75.0" text="telephone" />
-         </columns></TableView>
+            <TableColumn fx:id="tableMotif" prefWidth="136.0" text="Motif" />
+            <TableColumn fx:id="tableComment" prefWidth="118.4000244140625" text="Comment" />
+            <TableColumn fx:id="tableUserName" minWidth="4.0" prefWidth="113.5999755859375" text="Nom" />
+            <TableColumn fx:id="tableUserEmail" minWidth="0.0" prefWidth="98.4000244140625" text="Mail" />
+            <TableColumn fx:id="tableUserAdresse" prefWidth="135.99993896484375" text="adresse" />
+            <TableColumn fx:id="tableTelephoneNumber" prefWidth="173.60003662109375" text="telephone" />
+            <TableColumn fx:id="tablePieceName" minWidth="7.2000732421875" prefWidth="301.60009765625" text="Piece">
+               <columns>
+                  <TableColumn fx:id="tablePieceName" prefWidth="180.800048828125" text="Nom" />
+                  <TableColumn fx:id="tablePieceType" prefWidth="163.199951171875" text="Type" />
+                  <TableColumn fx:id="tablePiecePrix" minWidth="0.800048828125" prefWidth="86.4000244140625" text="Prix" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="tableMessGarage" minWidth="0.800048828125" prefWidth="272.0" text="Garage message" />
+            <TableColumn fx:id="tableMessUser" minWidth="0.800048828125" prefWidth="237.60009765625" text="User message" />
+         </columns>
+      </TableView>
    </children>
 </VBox>

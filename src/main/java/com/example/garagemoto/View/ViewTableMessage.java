@@ -60,7 +60,7 @@ public class ViewTableMessage {
 
         
         mess_Garage = new SimpleStringProperty(_mess_Garage) ;
-        this.mess_User = new SimpleStringProperty(_mess_User) ;
+        mess_User = new SimpleStringProperty(_mess_User) ;
 
         if (_request_messageId != 0) {
             this.request_messageId = new SimpleIntegerProperty(_request_messageId) ;
