@@ -103,7 +103,7 @@ public class HelloController implements Initializable{
     private TableColumn<ViewTablePieces, Integer> tablePiecePrix;
     
     @FXML
-    private TableColumn<ViewTablePieces, Integer> tablePieceType;
+    private TableColumn<ViewTablePieces, String> tablePieceType;
 
     //ObservableListe
 
@@ -140,7 +140,7 @@ public class HelloController implements Initializable{
         //Pieces        
         tablePieceName.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("PieceName"));
         tablePiecePrix.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, Integer>("piecePrix"));
-        tablePieceType.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, Integer>("pieceType"));
+        tablePieceType.setCellValueFactory(new PropertyValueFactory<ViewTablePieces, String>("pieceType"));
         
         //Garage
         //TODO---------------------------------------------------------------------------------------------------------------------------

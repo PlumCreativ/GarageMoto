@@ -156,7 +156,7 @@ public class BD{
                 Integer id_piece = rs.getInt("id_piece");
                 String NomPiece = rs.getString("nom_piece");
                 Integer PrixPiece = rs.getInt("prix_piece");
-                Integer TypePiece = rs.getInt("type_piece");
+                String TypePiece = rs.getString("type_piece");
                 pieceObject = new ViewTablePieces(
                     id_piece, 
                     NomPiece, 
@@ -361,7 +361,7 @@ public class BD{
                 Integer id_piece = rs.getInt("id_piece");
                 String NomPiece = rs.getString("nom_piece");
                 Integer PrixPiece = rs.getInt("prix_piece");
-                Integer TypePiece = rs.getInt("type_piece");
+                String TypePiece = rs.getString("type_piece");
 
                 //Message data
                 Integer id_message = rs.getInt("id_message");
@@ -378,8 +378,8 @@ public class BD{
                     TellNum,
 
                     NomPiece, 
-                    PrixPiece, 
                     TypePiece,
+                    PrixPiece, 
 
                     mess_Garage,
                     mess_User

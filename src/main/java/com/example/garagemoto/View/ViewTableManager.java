@@ -15,7 +15,7 @@ public class ViewTableManager {
     private  IntegerProperty telephoneNumber;
 
     private  StringProperty pieceName;
-    private  IntegerProperty pieceType;
+    private  StringProperty pieceType;
     private  IntegerProperty piecePrix;
 
 
@@ -32,7 +32,7 @@ public class ViewTableManager {
         int _telephoneNumber,
 
         String _pieceName, 
-        int _pieceType, 
+        String _pieceType, 
         int _piecePrix,
 
         String _mess_Garage, 
@@ -47,7 +47,7 @@ public class ViewTableManager {
         telephoneNumber = new SimpleIntegerProperty(_telephoneNumber);
         
         pieceName = new SimpleStringProperty(_pieceName);
-        pieceType = new SimpleIntegerProperty(_pieceType);
+        pieceType = new SimpleStringProperty(_pieceType);
         piecePrix = new SimpleIntegerProperty(_piecePrix);
 
         mess_Garage = new SimpleStringProperty(_mess_Garage) ;
@@ -85,7 +85,7 @@ public class ViewTableManager {
         return pieceName.get();
     }
 
-    public  Integer getPieceType() {
+    public  String getPieceType() {
         return pieceType.get();
     }
 
@@ -130,7 +130,7 @@ public class ViewTableManager {
         return pieceName;
     }
     
-    public final IntegerProperty piecetypeProperty() {
+    public final StringProperty piecetypeProperty() {
         return pieceType;
     }
     

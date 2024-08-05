@@ -5,7 +5,7 @@ public class ViewTablePieces {
 
     private int request_piecesId;
     private String pieceName;
-    private int pieceType;
+    private String pieceType;
     private int piecePrix;
 
 
@@ -18,7 +18,7 @@ public class ViewTablePieces {
         return this.pieceName;
     }
 
-    public  Integer getPieceType() {
+    public  String getPieceType() {
         return this.pieceType;
     }
 
@@ -37,7 +37,7 @@ public class ViewTablePieces {
         this.pieceName = pieceName;
     }
 
-    public void setPieceType(int pieceType) {
+    public void setPieceType(String pieceType) {
         this.pieceType = pieceType;;
     }
 
@@ -48,12 +48,12 @@ public class ViewTablePieces {
     public ViewTablePieces(
         int request_piecesId, 
         String pieceName, 
-        int pieceType, 
-        int piecePrix
+        int piecePrix,
+        String pieceType
         )   {
         this.pieceName = pieceName;
-        this.pieceType = pieceType;
         this.piecePrix = piecePrix;
+        this.pieceType = pieceType;
 
         if (request_piecesId != 0) {
             this.request_piecesId = request_piecesId ;
