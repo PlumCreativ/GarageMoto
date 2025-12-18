@@ -674,14 +674,6 @@ Pour toute question ou problème :
 
 ---
 
-## 🙏 Remerciements
-
-Merci à :
-- L'équipe pédagogique du BTS SIO
-- La communauté Java et JavaFX
-- Tous les contributeurs et utilisateurs
-
----
 
 **Dernière mise à jour** : Décembre 2024  
 **Version du README** : 2.0  
